@@ -1,0 +1,64 @@
+<div class="container">
+	<div class="results name">
+		<h3>Buscar usuários por nome:</h3>
+		<input type="text" (keyup)="userInput($event)">
+		<button (click)="findUser()">Buscar</button>
+		<div *ngIf="userFound; else userNotFoundMessage">
+			<div *ngFor="let d of userData">
+				<ul>
+					<li>Id: {{ d.id }}</li>
+					<li>Nome completo: {{ d.fullName }}</li>
+					<li>Gênero: {{ d.gender }}</li>
+					<li>Idade: {{ d.age }}</li>
+					<li>Email: {{ d.email }}</li>
+					<li>Telefone: {{ d.phone }}</li>
+					<li>Username: {{ d.username }}</li>
+				</ul>				
+			</div>				
+		</div>
+		<ng-template #userNotFoundMessage>
+			<p>{{noUserFound}}</p>
+		</ng-template>	
+	</div>
+
+	<div class="results book">
+		<h3>Buscar livro por título:</h3>
+		<input type="text" (keyup)="bookInput($event)">	
+		<button (click)="findBookByTitle()">Buscar</button>
+		<div *ngIf="bookFound; else bookNotFoundMessage">
+			<div *ngFor="let b of bookData">
+				<ul>
+					<li>Id: {{ b.id }}</li>
+					<li>Título: {{ b.title }}</li>
+					<li>Autor: {{ b.author }}</li>
+					<li>Ano de publicação: {{ b.yearPublished }}</li>
+					<li>Preço: {{ b.price }}</li>
+					<li>Nota: {{ b.rating }}</li>
+				</ul>				
+			</div>		
+		</div>
+		<ng-template #bookNotFoundMessage>
+			<p>{{noBookFound}}</p>
+		</ng-template>	
+
+		<h3>Buscar livro por autor:</h3>
+		<input type="text" (keyup)="authorInput($event)">	
+		<button (click)="findBookByAuthor()">Buscar</button>
+		<div *ngIf="authorFound; else authorNotFoundMessage">
+			<div *ngFor="let b of authorData">
+				<ul>
+					<li>Id: {{ b.id }}</li>
+					<li>Título: {{ b.title }}</li>
+					<li>Autor: {{ b.author }}</li>
+					<li>Ano de publicação: {{ b.yearPublished }}</li>
+					<li>Preço: {{ b.price }}</li>
+					<li>Nota: {{ b.rating }}</li>
+				</ul>				
+			</div>		
+		</div>
+		<ng-template #authorNotFoundMessage>
+			<p>{{noAuthorFound}}</p>
+		</ng-template>	
+		
+	</div>
+</div>
